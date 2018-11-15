@@ -7,7 +7,7 @@ int InOrder(file, int size)
   int i=0;
   while (i != size)
   {
-    printf("%s ; %s\n", file[i].temps, file[i].pouls);
+    printf("%ld ; %d\n", file[i].temps, file[i].pouls);
     i++;
   }
 }
@@ -50,6 +50,62 @@ int Decreasing(file, int size, char data)
         }
     }
     return file;
+}
+int average(file)
+{
+  int a;
+  int b;
+  int i;
+  int ave=0;
+  int nb;
+  printf("A partir de quel temps voulez vous commencer la moyenne des pouls?");
+  scanf("%d", &a);
+  printf("Jusqu'à quel temps voulez vous faire la moyenne des pouls?");
+  scanf("%d", &b);
+  while (file[i].temps > b)
+  {
+    while (file[i].temps < a)
+      {
+	i++;
+      }
+    ave += file[i].pouls;
+    nb++;
+    i++;
+  }
+  return ave / nb;
+}
+
+int size(int ArraySize)
+{
+  return ArraySize
+}
+
+int MaxMin(file, int size)
+{
+  int a;
+  printf ("Voulez vous la valeur maximum ou minimum?\n1: max\n2: min");
+  scanf("%d", &a);
+  int i;
+  int val;
+  if (a = 1)
+  {
+    for (i=0; i <= size; i++)
+      {
+    if (file[i].pouls > val)
+      val = i;
+      }
+    printf("%ld ; %d\n", file[val].temps, file[val].pouls);
+  }
+  
+  else if (a = 2)
+  {
+    for (i=0; i <= size; i++)
+      {
+	if (file[i].pouls > val)
+	  val = i;
+      }
+    printf("%ld ; %d\n", file[val].temps, file[val].pouls);
+  }
 }
 
 int main()
