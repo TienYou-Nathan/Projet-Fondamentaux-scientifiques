@@ -9,7 +9,7 @@
 #include <string.h>
 #include "donnees.h"
 
-int recupererDonnees(fichierProc * fichierFinal, int *taille){
+void recupererDonnees(fichierProc * fichierFinal, int *taille){
 	char temps[100] ;
 	char pouls [3] ;
 	int charFich;
@@ -50,15 +50,11 @@ int recupererDonnees(fichierProc * fichierFinal, int *taille){
 			fichierFinal[j].temps=atoi(temps);
 			fichierFinal[j].pouls=atoi(pouls);
 			*taille=taille2-1;
-			printf("test  %d %ld %d %d\n",*taille, fichierFinal[j].temps, fichierFinal[j].pouls, feof(fichier));
-			printf("ok");
-			fflush(stdout);
 			memset (temps, 0, sizeof (temps));
 			memset (pouls, 0, sizeof (pouls));
 			j++;
 		}
 		fclose(fichier);
-		return 0;
 	}
 }
 

@@ -16,6 +16,6 @@ struct fichierProc{
 };
 
 
-int recupererDonnees(fichierProc*, int*);
+void recupererDonnees(fichierProc*, int*);
 
 #endif /* DONNEES_H_ */
