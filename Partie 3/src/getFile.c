@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "paramsUtils.h"
+
 FILE* getFile(char* file) {
 	FILE *f = fopen(file, "w");
 	if (f == NULL) {
