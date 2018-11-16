@@ -62,7 +62,7 @@ int average(file)
   scanf("%d", &a);
   printf("Jusqu'à quel temps voulez vous faire la moyenne des pouls?");
   scanf("%d", &b);
-  while (file[i].temps > b)
+  while (file[i].temps < b)
   {
     while (file[i].temps < a)
       {
