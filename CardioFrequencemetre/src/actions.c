@@ -3,14 +3,14 @@
 #include "donnees.h"
 #include "actions.h"
 
-void InOrder(fichierProc* file, int size)
+void InOrder(fileProc* file, int size)
 {
 
 
 	int i=0;
 	while (i != size)
 	{
-		printf("%ld ; %d\n", file[i].temps, file[i].pouls);
+		printf("%ld ; %d\n", file[i].time, file[i].pulse);
 		fflush(stdout);
 		i++;
 
@@ -18,18 +18,18 @@ void InOrder(fichierProc* file, int size)
 
 }
 
-void Increasing(fichierProc* file, int size, int data)
+void Increasing(fileProc* file, int size, int data)
 {
 	printf("InOrder");
 	fflush(stdout);
 	int messy = TRUE;
-	fichierProc tmp;
+	fileProc tmp;
 	while (messy){
 		messy = FALSE;
 		if (data==1){
 			for (int j = 0; j < size-1; j++)
 			{
-				if(file[j].pouls > file[j+1].pouls)
+				if(file[j].pulse > file[j+1].pulse)
 				{
 					tmp = file[j+1];
 					file[j+1] = file[j];
@@ -42,7 +42,7 @@ void Increasing(fichierProc* file, int size, int data)
 		}else{
 			for (int j = 0; j < size-1; j++)
 			{
-				if(file[j].temps > file[j+1].temps)
+				if(file[j].time > file[j+1].time)
 				{
 					tmp = file[j+1];
 					file[j+1]= file[j];
@@ -55,17 +55,17 @@ void Increasing(fichierProc* file, int size, int data)
 	InOrder(file, size);
 }
 
-void Decreasing(fichierProc* file, int size, int data)
+void Decreasing(fileProc* file, int size, int data)
 {
 
 	int messy = TRUE;
-	fichierProc tmp;
+	fileProc tmp;
 	while (messy){
 		messy = FALSE;
 		if (data==1){
 			for (int j = 0; j < size-1; j++)
 			{
-				if(file[j].pouls < file[j+1].pouls)
+				if(file[j].pulse < file[j+1].pulse)
 				{
 					tmp = file[j+1];
 					file[j+1] = file[j];
@@ -77,7 +77,7 @@ void Decreasing(fichierProc* file, int size, int data)
 		}else{
 			for (int j = 0; j < size-1; j++)
 			{
-				if(file[j].temps < file[j+1].temps)
+				if(file[j].time < file[j+1].time)
 				{
 					tmp = file[j+1];
 					file[j+1]= file[j];
@@ -89,7 +89,7 @@ void Decreasing(fichierProc* file, int size, int data)
 	}
 	InOrder(file, size);
 }
-void average(fichierProc* file, int size)
+void average(fileProc* file, int size)
 {
 	int a;
 	int b;
@@ -102,48 +102,48 @@ void average(fichierProc* file, int size)
 	printf("Jusqu'a  quel temps voulez vous faire la moyenne des pouls?");
 	fflush(stdout);
 	scanf("%d", &b);
-	while (file[i].temps < b&&i<size)
+	while (file[i].time < b&&i<size)
 	{
-		while(file[i].temps < a)
+		while(file[i].time < a)
 		{
 			i++;
 		}
-		ave += file[i].pouls;
+		ave += file[i].pulse;
 		nb++;
 		i++;
 	}
-	double resultat= ave/nb;
-	printf("%f \n ", resultat);
+	double result= ave/nb;
+	printf("%f \n ", result);
 }
 
 
-void MaxMin(fichierProc *file, int size)
+void MaxMin(fileProc *file, int size)
 {
 	int val=0;
-	int indiceMax=0;
-	int indiceMin=0;
+	int indexMax=0;
+	int indexMin=0;
 	for (int i=0; i < size; i++)
 	{
-		if (file[i].pouls > val){
-			val = file[i].pouls;
-			indiceMax=i;
+		if (file[i].pulse > val){
+			val = file[i].pulse;
+			indexMax=i;
 		}
 
 	}
 
 	for (int i=0; i < size; i++)
 	{
-		if (file[i].pouls < val)
-			val = file[i].pouls;
-			indiceMin=i;
+		if (file[i].pulse < val)
+			val = file[i].pulse;
+			indexMin=i;
 	}
-	printf("Le pouls max est : %d à %ld \nLe pouls min est  de %d à %ld\n", file[indiceMax].pouls, file[indiceMax].temps, file[indiceMin].pouls, file[indiceMax].temps);
+	printf("Le pouls max est : %d à %ld \nLe pouls min est  de %d à %ld\n", file[indexMax].pulse, file[indexMax].time, file[indexMin].pulse, file[indexMax].time);
 	fflush(stdout);
 
 
 }
 
-void affichTrie(fichierProc* fichier, int size)
+void sortPrint(fileProc* file, int size)
 {
 	int a=0;
 	int b=0;
@@ -157,7 +157,7 @@ void affichTrie(fichierProc* fichier, int size)
 		printf("Quelle donnee voulez vous trier?\n1: pouls\n2: temps\n");
 		fflush(stdout);
 		scanf("%d", &b);
-		Increasing(fichier, size, b);
+		Increasing(file, size, b);
 		//detecter les erreurs de frappe
 		break;
 
@@ -165,7 +165,7 @@ void affichTrie(fichierProc* fichier, int size)
 		printf("Quelle donnee voulez vous trier?\n1: pouls\n2: temps\n");
 		fflush(stdout);
 		scanf("%d", &b);
-		Decreasing(fichier, size, b);
+		Decreasing(file, size, b);
 		break;
 
 	default:
@@ -173,19 +173,19 @@ void affichTrie(fichierProc* fichier, int size)
 		break;
 	}
 }
-void rechercheTemps(fichierProc* file, int size){
-	long int tempsMax;
-	long int tempsMin;
+void findTime(fileProc* file, int size){
+	long int timeMax;
+	long int timeMin;
 	printf("Entrez le temps minimal: \n");
 	fflush(stdout);
-	scanf("%ld", &tempsMin);
+	scanf("%ld", &timeMin);
 	printf("Entrez le temps maximal: \n");
 	fflush(stdout);
-	scanf("%ld", &tempsMax);
+	scanf("%ld", &timeMax);
 
 	for (int i = 0; i< size; i++){
-		if (file[i].temps>=tempsMin && file[i].temps <= tempsMax){
-			printf("%ld ; %d \n", file[i].temps, file[i].pouls);
+		if (file[i].time>=timeMin && file[i].time <= timeMax){
+			printf("%ld ; %d \n", file[i].time, file[i].pulse);
 
 		}
 	}

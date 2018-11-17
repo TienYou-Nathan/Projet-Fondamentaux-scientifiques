@@ -9,52 +9,52 @@
 #include <string.h>
 #include "donnees.h"
 
-void recupererDonnees(fichierProc * fichierFinal, int *taille){
-	char temps[100] ;
-	char pouls [3] ;
-	int charFich;
+void recupererDonnees(fileProc * fichierFinal, int *taille){
+	char time[100] ;
+	char pulse [3] ;
+	int charFile;
 	int i = 0;
 	int j=0;
 	int taille2=0;
 
-	FILE*  fichier=NULL;
-	if ((fichier = fopen ("Battements.csv", "r"))==NULL){
+	FILE*  file=NULL;
+	if ((file = fopen ("Battements.csv", "r"))==NULL){
 		printf("le fichier Battements.csv n'a pas ete trouve\n");
 		fflush(stdout);
 		exit(1);
 	}else{
 
-		while (!feof(fichier)){
+		while (!feof(file)){
 
 
-			while((charFich=fgetc(fichier))!=';'&&charFich!=EOF){
-				if (charFich != ';'){
-					temps[i]=charFich;
+			while((charFile=fgetc(file))!=';'&&charFile!=EOF){
+				if (charFile != ';'){
+					time[i]=charFile;
 					i++;
 				}else{
-					temps[i]='\0';
+					time[i]='\0';
 				}
 			}
 			i=0;
-			while((charFich=fgetc(fichier))!='&'&&charFich!=EOF){
-				if (charFich !='&'){
-					pouls[i]=charFich;
+			while((charFile=fgetc(file))!='&'&&charFile!=EOF){
+				if (charFile !='&'){
+					pulse[i]=charFile;
 					i++;
 				}else{
-					pouls[i]='\0';
+					pulse[i]='\0';
 				}
 			}
 			taille2++;
 			i=0;
 			fflush(stdout);
-			fichierFinal[j].temps=atoi(temps);
-			fichierFinal[j].pouls=atoi(pouls);
+			fichierFinal[j].time=atoi(time);
+			fichierFinal[j].pulse=atoi(pulse);
 			*taille=taille2-1;
-			memset (temps, 0, sizeof (temps));
-			memset (pouls, 0, sizeof (pouls));
+			memset (time, 0, sizeof (time));
+			memset (pulse, 0, sizeof (pulse));
 			j++;
 		}
-		fclose(fichier);
+		fclose(file);
 	}
 }
 

@@ -12,5 +12,5 @@
 #include <stdlib.h>
 #include "menu.h"
 int main(void) {
-	afficherMenu();
+	printMenu();
 }

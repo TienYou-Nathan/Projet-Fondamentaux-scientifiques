@@ -10,15 +10,15 @@
 #include "donnees.h"
 #include "actions.h"
 
-void afficherMenu(){
-	int sizeTabFichier=0;
-		fichierProc donnees;
-		fichierProc *premiereDonnee;
-		donnees.pouls=0;
-		donnees.temps=0;
+void printMenu(){
+	int sizeArrayCsv=0;
+		fileProc datas;
+		fileProc *ArrayCsv;
+		datas.pulse=0;
+		datas.time=0;
 
-		premiereDonnee=&donnees;
-		int reponse=0;
+		ArrayCsv=&datas;
+		int response=0;
 		printf("Bienvenue \nQue voulez-vous faire?\n \n");
 		printf("1) Afficher les données dans l’ordre du fichier .csv\n");
 		printf("2) Afficher les données en ordre croissant/décroissant\n");
@@ -28,30 +28,30 @@ void afficherMenu(){
 		printf("6) Rechercher et afficher les max/min de pouls (avec le temps associé)\n");
 		printf("0) Quitter\n");
 		fflush(stdout);
-		scanf("%d", &reponse);
+		scanf("%d", &response);
 		fflush(stdout);
-		recupererDonnees(premiereDonnee, &sizeTabFichier);
+		recupererDonnees(ArrayCsv, &sizeArrayCsv);
 
-		switch(reponse){
+		switch(response){
 		case 1:
 			fflush(stdout);
-			InOrder(premiereDonnee, sizeTabFichier);
+			InOrder(ArrayCsv, sizeArrayCsv);
 			break;
 		case 2:
-			affichTrie(premiereDonnee, sizeTabFichier);
+			sortPrint(ArrayCsv, sizeArrayCsv);
 			break;
 		case 3:
-			rechercheTemps(premiereDonnee, sizeTabFichier);
+			findTime(ArrayCsv, sizeArrayCsv);
 		break;
 		case 4:
-			average(premiereDonnee, sizeTabFichier);
+			average(ArrayCsv, sizeArrayCsv);
 			break;
 		case 5:
-			printf("%d \n", sizeTabFichier);
+			printf("%d \n", sizeArrayCsv);
 			fflush(stdout);
 			break;
 		case 6:
-			MaxMin(premiereDonnee, sizeTabFichier);
+			MaxMin(ArrayCsv, sizeArrayCsv);
 			break;
 
 		default:

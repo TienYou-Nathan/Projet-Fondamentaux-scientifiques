@@ -7,15 +7,15 @@
 
 #ifndef DONNEES_H_
 #define DONNEES_H_
-typedef struct fichierProc fichierProc;
-struct fichierProc{
-	long int temps;
-	int pouls;
-	fichierProc *ptr;
+typedef struct fileProc fileProc;
+struct fileProc{
+	long int time;
+	int pulse;
+	fileProc *ptr;
 
 };
 
 
-void recupererDonnees(fichierProc*, int*);
+void recupererDonnees(fileProc*, int*);
 
 #endif /* DONNEES_H_ */
