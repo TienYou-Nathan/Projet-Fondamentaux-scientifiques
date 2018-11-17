@@ -137,7 +137,7 @@ void MaxMin(fichierProc *file, int size)
 			val = file[i].pouls;
 			indiceMin=i;
 	}
-	printf("Le pouls max est : %d \nLe pouls min est  de %d \n", file[indiceMax].pouls, file[indiceMin].pouls);
+	printf("Le pouls max est : %d à %ld \nLe pouls min est  de %d à %ld\n", file[indiceMax].pouls, file[indiceMax].temps, file[indiceMin].pouls, file[indiceMax].temps);
 	fflush(stdout);
 
 

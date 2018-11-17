@@ -16,7 +16,7 @@ void afficherMenu(){
 		fichierProc *premiereDonnee;
 		donnees.pouls=0;
 		donnees.temps=0;
-		donnees.ptr=NULL;
+
 		premiereDonnee=&donnees;
 		int reponse=0;
 		printf("Bienvenue \nQue voulez-vous faire?\n \n");
