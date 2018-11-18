@@ -9,7 +9,6 @@
 #define HEART_H_
 
 struct heartParams {
-	int bpm;
 	int order;
 };
 

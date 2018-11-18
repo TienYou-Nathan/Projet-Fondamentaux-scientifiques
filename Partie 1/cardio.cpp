@@ -24,8 +24,6 @@ int detectPulse(state *settings, struct heartParams *params) {
 	}
 
 	if (settings->pulses > 1) {
-		params->bpm = (settings->pulses * 60)
-				/ ((millis() - settings->ms) / 1000);
 		if (settings->pulses > 10) {
 			return (settings->pulses * 60) / ((millis() - settings->ms) / 1000);
 		}
@@ -36,7 +34,6 @@ int detectPulse(state *settings, struct heartParams *params) {
 int initPulse() {
 	struct heartParams params;
 	params.order = 0;
-	params.bpm = 120;
 	state settings = { 0, millis(), analogRead(ANALOGPORT), 0, &params, 0 };
 	return detectPulse(&settings, &params);
 }
