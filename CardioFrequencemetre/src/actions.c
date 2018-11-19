@@ -99,10 +99,10 @@ void average(fileProc* file, int size)
 	printf("A partir de quel temps voulez vous commencer la moyenne des pouls?");
 	fflush(stdout);
 	scanf("%d", &a);
-	printf("Jusqu'a  quel temps voulez vous faire la moyenne des pouls?");
+	printf("Jusqu'aÂ  quel temps voulez vous faire la moyenne des pouls?");
 	fflush(stdout);
 	scanf("%d", &b);
-	while (file[i].time < b&&i<size)
+	while (file[i].time < b && i<size)
 	{
 		while(file[i].time < a)
 		{
@@ -137,7 +137,7 @@ void MaxMin(fileProc *file, int size)
 			val = file[i].pulse;
 			indexMin=i;
 	}
-	printf("Le pouls max est : %d à %ld \nLe pouls min est  de %d à %ld\n", file[indexMax].pulse, file[indexMax].time, file[indexMin].pulse, file[indexMax].time);
+	printf("Le pouls max est : %d Ã  %ld \nLe pouls min est  de %d Ã  %ld\n", file[indexMax].pulse, file[indexMax].time, file[indexMin].pulse, file[indexMax].time);
 	fflush(stdout);
 
 
